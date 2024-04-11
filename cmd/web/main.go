@@ -18,13 +18,12 @@ type application struct {
 }
 
 func main() {
- 
+  
   // You can run go run ./cmd/web -help to get the flag info e.g. "HTTP network adress" and the conversion type e.g. String
   addr := flag.String("addr", ":4000", "HTTP network adress")
   dsn := flag.String("dsn", "web:7777@/snippetbox?parseTime=true", "MySQL data source name")
-  
-  flag.Parse()
 
+  flag.Parse()
   // You can redirect the stdout and stderr streams to on disk files when starting the application like so 
   // go run ./cmd/web >>/tmp/info.log 2 >>/tmp/error.log
 
@@ -49,6 +48,7 @@ func main() {
     ErrorLog:  errorLog,
     Handler:  app.routes(),
   }
+
   infoLog.Printf("Starting server on %d", *addr)
   err = srv.ListenAndServe()
   errorLog.Fatal(err)
