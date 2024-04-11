@@ -43,9 +43,10 @@ func (model *SnippetModel) Get(id int) (*Snippet, error) {
 
   row := model.DB.QueryRow(stmt, id)
 
-  s := &Snippet{}
+  snippet := &Snippet{}
 
-  err := row.Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires)
+  err := row.Scan(&snippet.ID, &snippet.Title, &snippet.Content, &snippet.Created, &snippet.Expires)
+
   if err != nil {
 
     if errors.Is(err, sql.ErrNoRows) {
@@ -55,9 +56,39 @@ func (model *SnippetModel) Get(id int) (*Snippet, error) {
     }
   }
 
-  return s, nil
+  return snippet, nil
 }
 
 func (model *SnippetModel) Latest() ([]*Snippet, error) {
-  return nil, nil
+
+  stmt := `SELECT id, title, conten, created, expires FROM snippets
+  WHERE expires > UTC_TIMESTAMP() ORDER BY id DESC LIMIT 10`
+  
+  rows, err := model.DB.Query(stmt)
+  if err != nil {
+    return nil, err
+  }
+
+  defer rows.Close()
+
+  snippets := []*Snippet{}
+
+  for rows.Next() {
+    snippet := &Snippet{}
+
+    err = rows.Scan(&snippet.ID, &snippet.Title, &snippet.Content, &snippet.Created, &snippet.Expires)
+    if err != nil {
+      return nil, err
+    }
+
+    snippets = append(snippets, snippet)
+  }
+
+  if err = rows.Err(); err != nil {
+    return nil, err
+  }
+
+  return snippets, nil
+
+
 }
