@@ -24,9 +24,9 @@ func main() {
   dsn := flag.String("dsn", "web:7777@/snippetbox?parseTime=true", "MySQL data source name")
 
   flag.Parse()
+
   // You can redirect the stdout and stderr streams to on disk files when starting the application like so 
   // go run ./cmd/web >>/tmp/info.log 2 >>/tmp/error.log
-
   infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
   errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Lshortfile)
 
@@ -49,7 +49,7 @@ func main() {
     Handler:  app.routes(),
   }
 
-  infoLog.Printf("Starting server on %d", *addr)
+  infoLog.Printf("Starting server on %s", *addr)
   err = srv.ListenAndServe()
   errorLog.Fatal(err)
 }
