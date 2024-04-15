@@ -2,7 +2,6 @@ package main
 
 import (
   "errors"
-  "fmt"
   "net/http"
   "strconv"
 
@@ -52,16 +51,7 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) snippetCreate(w http.ResponseWriter, r *http.Request)  {
+  data := app.newTemplateData(r)
 
-  title := "O snail"
-  content := "O snail \n Climb Mount Fuji,\nBu slowly, slowly!\n\n- Kobayashi Issa"
-  expires := 7
-
-  id, err := app.snippets.Insert(title, content, expires)
-  if err != nil {
-    app.serverError(w, err)
-    return
-  }
-  
-  http.Redirect(w, r, fmt.Sprintf("/snippet/view/%d", id), http.StatusSeeOther)
+  app.render(w, http.StatusOK, "create.html", data)
 }
