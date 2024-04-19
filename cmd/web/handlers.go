@@ -101,11 +101,13 @@ func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request
   }
 
   if len(form.FieldErrors) > 0 {
-    fmt.Fprint(w, form.FieldErrors)
+    data := app.newTemplateData(r)
+    data.Form = form 
+    app.render(w, http.StatusUnprocessableEntity, "create.html", data)
     return
   }
 
-  id, err := app.snippets.Insert(title, content, expires) 
+  id, err := app.snippets.Insert(form.Title, form.Content, form.Expires) 
   if err != nil {
     app.serverError(w, err)
     return
