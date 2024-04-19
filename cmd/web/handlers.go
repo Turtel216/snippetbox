@@ -12,6 +12,13 @@ import (
 	"snippetbox.dimitrios_papakonstantinou.com/internal/models"
 )
 
+type snippetCreateForm struct {
+  Title         string
+  Content       string
+  Expires       int
+  FieldErrors   map[string]string
+}
+
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
   snippets, err := app.snippets.Latest()
