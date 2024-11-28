@@ -18,6 +18,8 @@ WORKDIR /app
 
 COPY --from=builder /app/main .
 
+COPY ./ui ./ui
+
 EXPOSE 4000
 
 CMD ["./main", "-addr", ":4000", "-dsn", "web:7777@tcp(mysql:3306)/snippetbox?parseTime=true"]
