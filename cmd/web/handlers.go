@@ -8,8 +8,8 @@ import (
 	"strings"
 	"unicode/utf8"
 
+	"github.com/Turtel216/snippetbox/internal/models"
 	"github.com/julienschmidt/httprouter"
-	"snippetbox.dimitrios_papakonstantinou.com/internal/models"
 )
 
 type snippetCreateForm struct {
