@@ -93,7 +93,3 @@ This project is for educational purposes and is not intended for production use.
 ## 🙌 Acknowledgments  
 
 - Special thanks to Alex Edwards for writing *Let's Go!*, which served as the primary resource for this project.  
-
----
-
-Let me know if you'd like to add specific details, like badges, screenshots, or deployment instructions!
