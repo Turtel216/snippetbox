@@ -1,7 +1,5 @@
 package main
 
-260 //TODO
-
 import (
 	"crypto/tls"
 	"database/sql"

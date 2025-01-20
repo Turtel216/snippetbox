@@ -20,6 +20,8 @@ COPY --from=builder /app/main .
 
 COPY ./ui ./ui
 
+COPY ./tls ./tls
+
 EXPOSE 4000
 
 CMD ["./main", "-addr", ":4000", "-dsn", "web:7777@tcp(mysql:3306)/snippetbox?parseTime=true"]
