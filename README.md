@@ -17,7 +17,7 @@ This project is a learning exercise designed to implement the best practices in 
 - **Clean Architecture**: Implements the layered design principles from *Let's Go!*  
 - **HTML Templates**: Dynamically render web pages using Go's `html/template` package.  
 - **Secure**: Includes best practices for input validation and protection against common vulnerabilities like XSS.  
-- **PostgreSQL Integration**: Uses PostgreSQL as the database to store snippet information.  
+- **MySQL Integration**: Uses MySQL as the database to store snippet information.  
 
 ## 📚 What I Learned  
 
@@ -32,12 +32,13 @@ While building this project, I focused on:
 
 ### Prerequisites  
 - [Go](https://golang.org/dl/) (1.20 or higher recommended)  
-- [PostgreSQL](https://www.postgresql.org/download/)  
+- [MySQL](/)  
+- [Docker](/)
 
 ### Installation  
 1. Clone the repository:  
    ```bash  
-   git clone https://github.com/your-username/snippetbox.git  
+   git clone https://github.com/Turtel216/snippetbox.git  
    cd snippetbox  
    ```  
 
@@ -46,22 +47,10 @@ While building this project, I focused on:
    go mod tidy  
    ```  
 
-3. Set up the database:  
-   - Create a PostgreSQL database.  
-   - Apply the SQL schema in `sql/schema.sql`.  
+3. Set up Docker:    
      ```bash  
-     psql -U your-username -d snippetbox -f sql/schema.sql  
+     docker-compose up -- buld  
      ```  
-
-4. Create a `.env` file in the root directory with the following:  
-   ```env  
-   DB_DSN="user=your-username password=your-password dbname=snippetbox sslmode=disable"  
-   ```  
-
-5. Run the application:  
-   ```bash  
-   go run ./cmd/web  
-   ```  
 
 6. Open your browser and visit: [http://localhost:4000](http://localhost:4000)  
 
