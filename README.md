@@ -25,15 +25,16 @@ While building this project, I focused on:
 1. Structuring a Go web application for maintainability and scalability.  
 2. Using Go's built-in libraries for routing and templating.  
 3. Handling forms and managing user input securely.  
-4. Working with a database (PostgreSQL) in Go.  
+4. Working with a database (MySQL) in Go.  
 5. Adding session-based authentication.  
 
 ## 🔧 Getting Started  
 
 ### Prerequisites  
 - [Go](https://golang.org/dl/) (1.20 or higher recommended)  
-- [MySQL](/)  
-- [Docker](/)
+- [MySQL](https://www.mysql.com/)  
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
 ### Installation  
 1. Clone the repository:  
@@ -49,7 +50,7 @@ While building this project, I focused on:
 
 3. Set up Docker:    
      ```bash  
-     docker-compose up -- buld  
+     docker-compose up --build
      ```  
 
 6. Open your browser and visit: [http://localhost:4000](http://localhost:4000)  
@@ -59,16 +60,17 @@ While building this project, I focused on:
 ```  
 snippetbox/  
 ├── cmd/  
-│   └── web/         # Entry point for the application  
+│   └── web/                # Entry point for the application  
 ├── internal/  
-│   ├── models/      # Database models and queries  
-│   ├── handlers/    # HTTP handlers for routing  
-│   ├── templates/   # HTML templates  
-│   ├── middleware/  # Custom middleware functions  
+│   ├── models/             # Database models and queries  
+│   ├── handlers/           # HTTP handlers for routing  
+│   ├── validation/         # Form validation helpers  
 │   └── …  
-├── sql/             # Database schema and migrations  
-├── go.mod           # Dependencies file  
-└── README.md        # Project documentation  
+├── init-scripts/           # Database schema and migrations  
+├── go.mod                  # Dependencies file  
+├── Dockerfile              # Snippetbox docker container  
+├── docker-compose.yml      # Data base and web app config
+└── README.md               # Project documentation  
 ```  
 
 ## 🤝 Contributing  
